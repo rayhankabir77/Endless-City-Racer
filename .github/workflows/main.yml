@@ -1,0 +1,26 @@
+name: Build APK
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup Java
+        uses: actions/setup-java@v3
+        with:
+          java-version: '11'
+          distribution: 'temurin'
+
+      - name: Build with Bubblewrap
+        uses: mhadaily/bubblewrap-action@v2
+        with:
+          # আপনার গেমের নাম এখানে দিন
+          app_name: "Endless-City-Racer"
+          hostname: "github.com"
+          icon_path: "icon.png" # নিশ্চিত করুন এই নামে আপনার একটি ছবি আছে
+          package_id: "com.raybil.game"
+          # এই কমান্ডটি আপনার HTML ফাইলকে APK করবে
+          build_command: "ls" 
